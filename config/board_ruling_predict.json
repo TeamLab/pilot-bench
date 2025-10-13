@@ -1,0 +1,299 @@
+{
+    "path": {
+        "root_path": "Path/root/dir",
+        "input_dir": "data/json/opinion_split/output/version_3/gemini-2.5-pro",
+        "output_dir": "data/json/decision_predict/output",
+        "log_dir": "log",
+        "decision_type": "data/json/board_ruling.json",
+        "wandb_run_id": "data/wandb_run_id",
+        "batch_dir": "data/json/batch",
+        "uspto_dir": "data/json/uspto"
+    },
+    "prompt": {
+        "prompt_dir": "data/prompt/decision_predict",
+        "system": "system.txt",
+        "board_ruling": "board_ruling.txt",
+        "(merge)board_ruling": "(merge)board_ruling.txt",
+        "(claim)board_ruling": "(claim)board_ruling.txt"
+    },
+    "async": {
+        "concurrency": 3
+    },
+    "gpt": {
+        "llm_params": {
+            "model": "gpt-4o",
+            "temperature": 0.0,
+            "functions": [
+                {
+                    "name": "predict_board_ruling",
+                    "description": "PTAB decision index as defined in Board Ruling Dictionary",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "board_ruling": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "board_ruling"
+                        ]
+                    }
+                }
+            ],
+            "function_call": {
+                "name": "predict_board_ruling"
+            }
+        }
+    },
+    "gpt-batch": {
+        "llm_params": {
+            "model": "gpt-4o-2024-08-06",
+            "temperature": 0.0,
+            "functions": [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "predict_board_ruling",
+                        "description": "PTAB decision index as defined in Board Ruling Dictionary",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "board_ruling": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "board_ruling"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_board_ruling"
+                }
+            }
+        }
+    },
+    "gpt-o": {
+        "llm_params": {
+            "model": "o3-2025-04-16",
+            "temperature": 0,
+            "functions": [
+                {
+                    "name": "predict_board_ruling",
+                    "description": "PTAB decision index as defined in Board Ruling Dictionary",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "board_ruling": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "board_ruling"
+                        ]
+                    }
+                }
+            ],
+            "function_call": {
+                "name": "predict_board_ruling"
+            }
+        }
+    },
+    "gpt-o-batch": {
+        "llm_params": {
+            "model": "o3-2025-04-16",
+            "functions": [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "predict_board_ruling",
+                        "description": "PTAB decision index as defined in Board Ruling Dictionary",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "board_ruling": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "board_ruling"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_board_ruling"
+                }
+            }
+        }
+    },
+    "claude": {
+        "llm_params": {
+            "model": "claude-sonnet-4-20250514",
+            "temperature": 0.0,
+            "max_tokens": 32000,
+            "timeout": 3600,
+            "functions": [
+                {
+                    "name": "predict_board_ruling",
+                    "description": "PTAB decision index as defined in Board Ruling Dictionary",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "board_ruling": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "board_ruling"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "gemini": {
+        "llm_params": {
+            "model": "gemini-2.5-pro",
+            "temperature": 0.0,
+            "functions": {
+                "type": "object",
+                "properties": {
+                    "board_ruling": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "board_ruling"
+                ]
+            }
+        }
+    },
+    "gemini-batch": {
+        "llm_params": {
+            "model": "gemini-2.5-pro",
+            "temperature": 0.0,
+            "functions": {
+                "type": "OBJECT",
+                "properties": {
+                    "board_ruling": {
+                        "type": "ARRAY",
+                        "items": {
+                            "type": "STRING"
+                        }
+                    }
+                },
+                "required": [
+                    "board_ruling"
+                ]
+            },
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "board_ruling": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "board_ruling"
+                ]
+            }
+        }
+    },
+    "llama": {
+        "llm_params": {
+            "model": "meta-llama/Llama-3.1-8B-Instruct",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "qwen": {
+        "llm_params": {
+            "model": "Qwen/Qwen3-8B",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "solar": {
+        "llm_params": {
+            "model": "solar-pro2",
+            "reasoning_effort": "high",
+            "temperature": 0.0,
+            "functions": {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "predict_board_ruling",
+                    "description": "PTAB decision index as defined in Board Ruling Dictionary",
+                    "strict": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "board_ruling": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "board_ruling"
+                        ]
+                    }
+                }
+            },
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_board_ruling"
+                }
+            }
+        }
+    },
+    "mistral": {
+        "llm_params": {
+            "model": "mistralai/Mistral-7B-Instruct-v0.3",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "deepseek": {
+        "llm_params": {
+            "model": "deepseek-ai/deepseek-llm-7b-chat",
+            "torch_dtype": "bfloat16"
+        }
+    },
+    "t5": {
+        "llm_params": {
+            "model": "google/t5gemma-2b-2b-ul2-it",
+            "torch_dtype": "bfloat16"
+        }
+    }
+}

@@ -1,0 +1,311 @@
+{
+    "path": {
+        "root_path": "Path/root/dir",
+        "input_dir": "data/json/opinion_split/output/version_3/gemini-2.5-pro",
+        "output_dir": "data/json/decision_predict/output",
+        "log_dir": "log",
+        "decision_type": "data/json/coarse_decision_type.json",
+        "wandb_run_id": "data/wandb_run_id",
+        "batch_dir": "data/json/batch",
+        "uspto_dir": "data/json/uspto"
+    },
+    "prompt": {
+        "prompt_dir": "data/prompt/decision_predict",
+        "system": "system.txt",
+        "subdecision_type": "subdecision_type.txt",
+        "subdecision_type_coarse": "subdecision_type_coarse.txt",
+        "(merge)subdecision_type": "(merge)subdecision_type.txt",
+        "(merge)subdecision_type_coarse": "(merge)subdecision_type_coarse.txt",
+        "(claim)subdecision_type": "(claim)subdecision_type.txt",
+        "(claim)subdecision_type_coarse": "(claim)subdecision_type_coarse.txt"
+    },
+    "async": {
+        "concurrency": 3
+    },
+    "gpt": {
+        "llm_params": {
+            "model": "gpt-4o",
+            "temperature": 0.0,
+            "functions": [
+                {
+                    "name": "predict_subdecision",
+                    "description": "PTAB decision index as defined in Decision Type Dictionary",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "decision_type": {
+                                "type": "string"
+                            },
+                            "decision_number": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "decision_type",
+                            "decision_number"
+                        ]
+                    }
+                }
+            ],
+            "function_call": {
+                "name": "predict_subdecision"
+            }
+        }
+    },
+    "gpt-batch": {
+        "llm_params": {
+            "model": "gpt-4o-2024-08-06",
+            "temperature": 0.0,
+            "functions": [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "predict_subdecision",
+                        "description": "PTAB decision index as defined in Decision Type Dictionary",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "decision_type": {
+                                    "type": "string"
+                                },
+                                "decision_number": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "decision_type",
+                                "decision_number"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_subdecision"
+                }
+            }
+        }
+    },
+    "gpt-o": {
+        "llm_params": {
+            "model": "o3-2025-04-16",
+            "temperature": 0,
+            "functions": [
+                {
+                    "name": "predict_subdecision",
+                    "description": "PTAB decision index as defined in Decision Type Dictionary",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "decision_type": {
+                                "type": "string"
+                            },
+                            "decision_number": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "decision_type",
+                            "decision_number"
+                        ]
+                    }
+                }
+            ],
+            "function_call": {
+                "name": "predict_subdecision"
+            }
+        }
+    },
+    "gpt-o-batch": {
+        "llm_params": {
+            "model": "o3-2025-04-16",
+            "functions": [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "predict_subdecision",
+                        "description": "PTAB decision index as defined in Decision Type Dictionary",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "decision_type": {
+                                    "type": "string"
+                                },
+                                "decision_number": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "decision_type",
+                                "decision_number"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_subdecision"
+                }
+            }
+        }
+    },
+    "claude": {
+        "llm_params": {
+            "model": "claude-sonnet-4-20250514",
+            "temperature": 0.0,
+            "max_tokens": 32000,
+            "timeout": 3600,
+            "functions": [
+                {
+                    "name": "predict_subdecision",
+                    "description": "PTAB decision index as defined in Decision Type Dictionary",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "decision_type": {
+                                "type": "string"
+                            },
+                            "decision_number": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "decision_type",
+                            "decision_number"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "gemini": {
+        "llm_params": {
+            "model": "gemini-2.5-pro",
+            "temperature": 0.0,
+            "functions": {
+                "type": "object",
+                "properties": {
+                    "decision_type": {
+                        "type": "string"
+                    },
+                    "decision_number": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "decision_type",
+                    "decision_number"
+                ]
+            }
+        }
+    },
+    "gemini-batch": {
+        "llm_params": {
+            "model": "gemini-2.5-pro",
+            "temperature": 0.0,
+            "functions": {
+                "type": "OBJECT",
+                "properties": {
+                    "decision_type": {
+                        "type": "STRING"
+                    },
+                    "decision_number": {
+                        "type": "INTEGER"
+                    }
+                },
+                "required": [
+                    "decision_type",
+                    "decision_number"
+                ]
+            },
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "decision_type": {
+                        "type": "string"
+                    },
+                    "decision_number": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "decision_type",
+                    "decision_number"
+                ]
+            }
+        }
+    },
+    "llama": {
+        "llm_params": {
+            "model": "meta-llama/Llama-3.1-8B-Instruct",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "qwen": {
+        "llm_params": {
+            "model": "Qwen/Qwen3-8B",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "solar": {
+        "llm_params": {
+            "model": "solar-pro2",
+            "reasoning_effort": "high",
+            "temperature": 0.0,
+            "functions": {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "predict_subdecision",
+                    "description": "PTAB decision index as defined in Decision Type Dictionary",
+                    "strict": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "decision_type": {
+                                "type": "string"
+                            },
+                            "decision_number": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "decision_type",
+                            "decision_number"
+                        ]
+                    }
+                }
+            },
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_subdecision"
+                }
+            }
+        }
+    },
+    "mistral": {
+        "llm_params": {
+            "model": "mistralai/Mistral-7B-Instruct-v0.3",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "deepseek": {
+        "llm_params": {
+            "model": "deepseek-ai/deepseek-llm-7b-chat",
+            "torch_dtype": "bfloat16"
+        }
+    },
+    "t5": {
+        "llm_params": {
+            "model": "google/t5gemma-2b-2b-ul2-it",
+            "torch_dtype": "bfloat16"
+        }
+    }
+}

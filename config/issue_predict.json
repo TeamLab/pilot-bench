@@ -1,0 +1,299 @@
+{
+    "path": {
+        "root_path": "Path/root/dir",
+        "input_dir": "data/json/opinion_split/output/version_3/gemini-2.5-pro",
+        "output_dir": "data/json/decision_predict/output",
+        "log_dir": "log",
+        "issue_type": "data/json/issue_type.json",
+        "wandb_run_id": "data/wandb_run_id",
+        "batch_dir": "data/json/batch",
+        "uspto_dir": "data/json/uspto"
+    },
+    "prompt": {
+        "prompt_dir": "data/prompt/decision_predict",
+        "system": "system.txt",
+        "issue_type": "issue_type.txt",
+        "(merge)issue_type": "(merge)issue_type.txt",
+        "(claim)issue_type": "(claim)issue_type.txt"
+    },
+    "async": {
+        "concurrency": 3
+    },
+    "gpt": {
+        "llm_params": {
+            "model": "gpt-4o",
+            "temperature": 0.0,
+            "functions": [
+                {
+                    "name": "predict_issue_type",
+                    "description": "PTAB issue index as defined in Issue-Type Index Dictionary",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "issue_type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "issue_type"
+                        ]
+                    }
+                }
+            ],
+            "function_call": {
+                "name": "predict_issue_type"
+            }
+        }
+    },
+    "gpt-batch": {
+        "llm_params": {
+            "model": "gpt-4o-2024-08-06",
+            "temperature": 0.0,
+            "functions": [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "predict_issue_type",
+                        "description": "PTAB issue index as defined in Issue-Type Index Dictionary",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "issue_type": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "issue_type"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_issue_type"
+                }
+            }
+        }
+    },
+    "gpt-o": {
+        "llm_params": {
+            "model": "o3-2025-04-16",
+            "temperature": 0,
+            "functions": [
+                {
+                    "name": "predict_issue_type",
+                    "description": "PTAB issue index as defined in Issue-Type Index Dictionary",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "issue_type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "issue_type"
+                        ]
+                    }
+                }
+            ],
+            "function_call": {
+                "name": "predict_issue_type"
+            }
+        }
+    },
+    "gpt-o-batch": {
+        "llm_params": {
+            "model": "o3-2025-04-16",
+            "functions": [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "predict_issue_type",
+                        "description": "PTAB issue index as defined in Issue-Type Index Dictionary",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "issue_type": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "issue_type"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_issue_type"
+                }
+            }
+        }
+    },
+    "claude": {
+        "llm_params": {
+            "model": "claude-sonnet-4-20250514",
+            "temperature": 0.0,
+            "max_tokens": 32000,
+            "timeout": 3600,
+            "functions": [
+                {
+                    "name": "predict_issue_type",
+                    "description": "PTAB issue index as defined in Issue-Type Index Dictionary",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "issue_type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "issue_type"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "gemini": {
+        "llm_params": {
+            "model": "gemini-2.5-pro",
+            "temperature": 0.0,
+            "functions": {
+                "type": "object",
+                "properties": {
+                    "issue_type": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "issue_type"
+                ]
+            }
+        }
+    },
+    "gemini-batch": {
+        "llm_params": {
+            "model": "gemini-2.5-pro",
+            "temperature": 0.0,
+            "functions": {
+                "type": "OBJECT",
+                "properties": {
+                    "issue_type": {
+                        "type": "ARRAY",
+                        "items": {
+                            "type": "STRING"
+                        }
+                    }
+                },
+                "required": [
+                    "issue_type"
+                ]
+            },
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "issue_type": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "issue_type"
+                ]
+            }
+        }
+    },
+    "llama": {
+        "llm_params": {
+            "model": "meta-llama/Llama-3.1-8B-Instruct",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "qwen": {
+        "llm_params": {
+            "model": "Qwen/Qwen3-8B",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "solar": {
+        "llm_params": {
+            "model": "solar-pro2",
+            "reasoning_effort": "high",
+            "temperature": 0.0,
+            "functions": {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "predict_issue_type",
+                    "description": "PTAB issue index as defined in Issue-Type Index Dictionary",
+                    "strict": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "issue_type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "issue_type"
+                        ]
+                    }
+                }
+            },
+            "function_call": {
+                "type": "function",
+                "function": {
+                    "name": "predict_issue_type"
+                }
+            }
+        }
+    },
+    "mistral": {
+        "llm_params": {
+            "model": "mistralai/Mistral-7B-Instruct-v0.3",
+            "device_map": "auto",
+            "torch_dtype": "float16"
+        }
+    },
+    "deepseek": {
+        "llm_params": {
+            "model": "deepseek-ai/deepseek-llm-7b-chat",
+            "torch_dtype": "bfloat16"
+        }
+    },
+    "t5": {
+        "llm_params": {
+            "model": "google/t5gemma-2b-2b-ul2-it",
+            "torch_dtype": "bfloat16"
+        }
+    }
+}
