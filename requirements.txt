@@ -1,0 +1,36 @@
+# Core scientific stack
+numpy==1.26.4
+pandas==2.2.3
+scikit-learn==1.5.0
+scipy==1.15.3
+tqdm==4.66.3
+python-dateutil>=2.9.0
+python-dotenv==1.1.0
+
+# Deep learning / model inference
+torch==2.7.1
+transformers==4.53.0
+accelerate==1.9.0
+sentencepiece==0.2.0
+safetensors>=0.5.3
+
+# Evaluation & validation
+jsonschema==4.24.0
+
+# Logging & tracking
+wandb==0.21.1
+
+# OpenAI / Anthropic / Gemini API clients
+openai==1.82.0
+anthropic==0.52.2
+google-genai==1.31.0
+google-generativeai==0.8.5
+
+# Utility
+requests>=2.31.0
+regex>=2024.11.6
+datasets==4.1.1
+
+# Optional but recommended for Hugging Face integrations
+huggingface-hub==0.33.2
+fsspec>=2025.5.1
