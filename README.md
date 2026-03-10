@@ -5,7 +5,7 @@ This repository provides code, configuration, and evaluation scripts for the **P
 
 > **Yehoon Jang\*, Chaewon Lee\*, Hyun-seok Min, and Sungchul Choi (2025)**  
 > *PILOT-Bench: A Benchmark for Legal Reasoning in the Patent Domain with IRAC-Aligned Classification Tasks*  
-> [Paper](https://aclanthology.org/2025.nllp-1.17/) | [[Dataset]] (To be updated)
+> [Paper](https://aclanthology.org/2025.nllp-1.17/) | [Dataset](https://huggingface.co/datasets/Yehoon/pilot-bench)
 
 ---
 
@@ -213,7 +213,8 @@ This repository and dataset **must not** be used to provide or automate legal ad
 For research inquiries or collaborations:
 ```
 Yehoon Jang   : jangyh0420@pukyong.ac.kr  
-Chaewon Lee   : oochaewon@pukyong.ac.kr  
+Chaewon Lee   : oochaewon@pukyong.ac.kr
+Hyun-seok Min : min6284@gmail.com  
 Sungchul Choi : sc82.choi@pknu.ac.kr
 ```
 
